@@ -27,3 +27,9 @@ subprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+buildscript {
+  dependencies {
+    // Add this line
+    classpath 'com.google.gms:google-services:4.0.1'
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "367547848602",
+    "firebase_url": "https://dictate-new-words.firebaseio.com",
+    "project_id": "dictate-new-words",
+    "storage_bucket": "dictate-new-words.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:367547848602:android:1ab6984b756a70a7",
+        "android_client_info": {
+          "package_name": "life.brusnika.dictate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "367547848602-s76lcjdchct709uvjqom83n34l2tm0mm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALQ_JU5z9b12_yTOS-TfbHeA9hckQdLic"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
