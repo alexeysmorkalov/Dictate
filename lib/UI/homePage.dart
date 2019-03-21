@@ -1,4 +1,6 @@
+import 'package:dictate/Service/cityService.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -19,7 +21,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final TextEditingController _typeAheadController = TextEditingController();
+  final GlobalKey<_HomePageState> _formKey = GlobalKey<_HomePageState>();
+
   int _counter = 0;
+  String _selectedCity;
 
   void _incrementCounter() {
     setState(() {
@@ -66,12 +72,43 @@ class _HomePageState extends State<HomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            
             Text(
               'You have pushed the button this many times:',
             ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.display1,
+            ),
+            Text('What is your favorite city?'),
+            TypeAheadFormField(
+              textFieldConfiguration: TextFieldConfiguration(
+                decoration: InputDecoration(labelText: 'City'),
+                controller: this._typeAheadController,
+              ),
+              suggestionsCallback: (pattern) {
+                return CitiesService.getSuggestions(pattern);
+              },
+              itemBuilder: (context, suggestion) {
+                return ListTile(
+                  title: Text(suggestion),
+                );
+              },
+              transitionBuilder: (context, suggestionsBox, controller) {
+                return suggestionsBox;
+              },
+              onSuggestionSelected: (suggestion) {
+                this._typeAheadController.text = suggestion;
+              },
+              validator: (value) {
+                if (value.isEmpty) {
+                  return 'Please select a city';
+                }
+              },
+              onSaved: (value) => this._selectedCity = value,
+            ),
+            SizedBox(
+              height: 10.0,
             ),
           ],
         ),
@@ -84,3 +121,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
